@@ -1,2 +1,16 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="board">
+  <table>
+    <% 20.times do |x|%>
+      <tr>
+        <% 20.times do |y|%>
+          <td class="cell" id="<%= x %>,<%= y %>">
+
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<button id="skip" hidden>
+  <%= link_to play_path(), id: "skip-btn" %>
+</button>
