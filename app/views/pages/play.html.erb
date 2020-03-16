@@ -1,36 +1,40 @@
-<div class="display">
+<div class="display d-flex justify-content-center align-items-center" style="height: 100vh">
   <div class="container">
     <table class="board">
-      <% @matrix.each_with_index do |row, i|  %>
-        <tr class="row">
-          <% row.each_with_index do |cell, j| %>
-            <% if cell.alive? %>
-              <td class="cell black" x-position="<%= i %>" y-position="<%= j %>">
+      <% if @matrix %>
+        <% @matrix.each_with_index do |row, i|  %>
+          <tr class="row">
+            <% row.each_with_index do |cell, j| %>
+              <% if cell.alive? %>
+                <td class="cell black" x-position="<%= i %>" y-position="<%= j %>">
 
-              </td>
-            <% else %>
-              <td class="cell white" x-position="<%= i %>" y-position="<%= j %>">
+                </td>
+              <% else %>
+                <td class="cell white" x-position="<%= i %>" y-position="<%= j %>">
 
-              </td>
+                </td>
+              <% end %>
             <% end %>
-          <% end %>
-        </tr>
+          </tr>
+        <% end %>
       <% end %>
     </table>
-  </div>
 
-  <div class="config">
-    <form action="" method="post">
+  <div class="config form-group d-flex justify-content-center">
+    <form action="" method="post" class="text-center mb-3">
       <label for="rows">nb of rows</label>
-      <input type="text" name="rows">
+      <input type="number" name="rows" min="8" max="64" class="form-control mb-3">
       <label for="columns">nb of columns</label>
-      <input type="text">
+      <input type="number" name="columns" min="8" max="64" class="form-control mb-3">
+      <label for="loop">nb of iteration</label>
+      <input type="number" name="loop" min="2" max="999" class="form-control mb-3">
       <label for="rules">choose rules</label>
-      <input type="text">
+      <input type="text" class="form-control mb-3">
       <label for="random">random points</label>
-      <input type="checkbox">
-      <input type="submit">
+      <input type="checkbox" class="form-control mb-3">
+      <input type="submit" class="btn btn-primary">
     </form>
   </div>
 
+  </div>
 </div>
